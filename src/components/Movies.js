@@ -5,16 +5,16 @@ const Movies = () => {
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
-        // const headers = new Headers();
-        // headers.append("Content-Type", "application/json");
+        const headers = new Headers();
+        headers.append("Content-Type", "application/json");
 
         const requestOptions = {
             method: "Get",
-            // headers: headers,
+            headers: headers,
         }
 
 
-        fetch(`http://localhost/8080/movies`, requestOptions)
+        fetch(`http://localhost:8080/movies`, requestOptions)
             .then((respons) => respons.json())
             .then((data) => {
                 setMovies(data);
