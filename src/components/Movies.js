@@ -9,13 +9,13 @@ const Movies = () => {
         headers.append("Content-Type", "application/json");
 
         const requestOptions = {
-            method: "Get",
+            method: "GET",
             headers: headers,
         }
 
 
         fetch(`http://localhost:8080/movies`, requestOptions)
-            .then((respons) => respons.json())
+            .then((response) => response.json())
             .then((data) => {
                 setMovies(data);
             })
@@ -29,7 +29,7 @@ const Movies = () => {
         <div>
             <h2>Movies</h2>
             <hr />
-            <table className="table tavle-stripped table-hover">
+            <table className="table table-stripped table-hover">
                 <thead>
                     <tr>
                         <th>Movie</th>
