@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Input from "./form/input";
+import Input from "./form/Input";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
 const Login = () => {
@@ -9,6 +9,7 @@ const Login = () => {
     const { setJwtToken } = useOutletContext();
     const { setAlertClassName } = useOutletContext();
     const { setAlertMessage } = useOutletContext();
+    const { toggleRefresh } = useOutletContext();
 
     const navigate = useNavigate();
 
@@ -40,6 +41,7 @@ const Login = () => {
                     setJwtToken(data.access_token);
                     setAlertClassName("d-none");
                     setAlertMessage("");
+                    toggleRefresh(true);
                     navigate("/");
                 }
             })
