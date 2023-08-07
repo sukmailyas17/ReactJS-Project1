@@ -12,7 +12,7 @@ const EditMovie = () => {
     const navigate = useNavigate();
     const { jwtToken } = useOutletContext();
 
-    const [error, setError] = useState(null);
+    // const [error, setError] = useState(null);
     const [errors, setErrors] = useState([]);
 
     const mpaaOptions = [
@@ -132,7 +132,7 @@ const EditMovie = () => {
         // passed validation, so save changes 
         const headers = new Headers();
         headers.append("Content-Type", "application/json")
-        headers.append("Authorization", "Bearer" + jwtToken)
+        headers.append("Authorization", "Bearer " + jwtToken)
 
         // assume we are adding a new movie
         let method = "PUT";
@@ -154,17 +154,18 @@ const EditMovie = () => {
             headers: headers,
             credential: "include",
         }
+        console.log(requestOptions, "ija")
         fetch(`/admin/movies/${movie.id}`, requestOptions)
             .then((response) => response.json())
             .then((data) => {
                 if (data.error) {
-                    console.log(data.error);
+                    console.log(data.error, "first");
                 } else {
                     navigate("/manage-catalogue");
                 }
             })
             .catch(err => {
-                console.log(err);
+                console.log(err, "second");
             })
     }
 
